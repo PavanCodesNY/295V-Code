@@ -35,6 +35,13 @@
 #define PROS_USE_LITERALS
 
 #include "api.h"
+#include "EZ-Template/linear_puncher.hpp"
+#include "EZ-Template/globals.hpp"
+#include "EZ-Template/intake.hpp"
+
+#include "okapi/api.hpp"
+
+
 
 /**
  * You should add more #includes here

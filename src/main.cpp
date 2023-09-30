@@ -5,11 +5,11 @@
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-15, -16}
+  {-1, -2, 3}
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{6, 5}
+  ,{-4, -5, 6}
 
   // IMU Port
   ,20
@@ -20,13 +20,13 @@ Drive chassis (
 
   // Cartridge RPM
   //   (or tick per rotation if using tracking wheels)
-  ,1200
+  ,600
 
   // External Gear Ratio (MUST BE DECIMAL)
   //    (or gear ratio of tracking wheel)
   // eg. if your drive is 84:36 where the 36t is powered, your RATIO would be 2.333.
   // eg. if your drive is 36:60 where the 60t is powered, your RATIO would be 0.6.
-  ,2
+  ,0.4285714286
 
 
   // Uncomment if using tracking wheels
@@ -54,8 +54,6 @@ Drive chassis (
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-  // Print our branding over your terminal :D
-  ez::print_ez_template();
   
   pros::delay(500); // Stop the user from doing anything while legacy ports configure.
 
@@ -155,14 +153,16 @@ void opcontrol() {
   while (true) {
 
     chassis.tank(); // Tank control
-    // chassis.arcade_standard(ez::SPLIT); // Standard split arcade
+    chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     // chassis.arcade_standard(ez::SINGLE); // Standard single arcade
     // chassis.arcade_flipped(ez::SPLIT); // Flipped split arcade
     // chassis.arcade_flipped(ez::SINGLE); // Flipped single arcade
 
     // . . .
     // Put more user control code here!
-    // . . .
+    setIntakeMotors();
+    
+    
 
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
