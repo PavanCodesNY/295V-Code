@@ -174,9 +174,10 @@ void Drive::set_defaults() {
   // Disables limit switch for auto selector
   as::limit_switch_lcd_initialize(nullptr, nullptr);
 }
+ 
 
 double Drive::get_tick_per_inch() {
-  CIRCUMFERENCE = WHEEL_DIAMETER * M_PI;
+  CIRCUMFERENCE = WHEEL_DIAMETER * okapi::pi;
 
   if (is_tracker == DRIVE_ADI_ENCODER || is_tracker == DRIVE_ROTATION)
     TICK_PER_REV = CARTRIDGE * RATIO;
