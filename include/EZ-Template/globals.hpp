@@ -1,3 +1,6 @@
+p
+#include "main.h";
+
 // Controller
 extern pros::Controller controller;
 
